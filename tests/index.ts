@@ -28,7 +28,7 @@ test('Basic test', (t) => {
         const localDestinations = destinations.slice(0, destinationsCount);
         const localKeys = keys.slice(0, keysCount);
         for (const key of localKeys) {
-            const destination = pickDestinations(sha256_64, key, localDestinations)[0];
+            const destination = pickDestinations(key, localDestinations)[0];
             let occurrences = results.get(destination) || 0;
             ++occurrences;
             results.set(destination, occurrences);
@@ -45,9 +45,9 @@ test('Basic test', (t) => {
             }
         });
 
-        t.assert(max > min, `${max} > ${min}`);
-        t.assert(min > 0, `No empty destination`);
-        t.assert(max < keysCount, `Keys are not all in one destination`);
+        t.assert(max > min, `${keysCount} in ${destinationsCount}: max ${max} > min ${min}`);
+        t.assert(min > 0, `${keysCount} in ${destinationsCount}: No empty destination`);
+        t.assert(max < keysCount, `${keysCount} in ${destinationsCount}: Keys are not all in one destination`);
     }
 
     run(10, 100);

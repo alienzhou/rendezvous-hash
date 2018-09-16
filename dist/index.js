@@ -83,13 +83,11 @@
         return -weight / Math.log(value / 0xFFFFFFFFFFFFFFFF);
     }
     /**
-     * @param hashFunction Accepts 8-byte (64-bit) Uint8Array  and returns 8-byte (64-bit) Uint8Array
-     * @param key 8-byte (64-bit) key
+     * @param keyHash 8-byte (64-bit) key hash
      * @param destinations
-     * @param k Number of destinations to return
+     * @param k Integer number of destinations to return
      */
-    function pickDestinations(hashFunction, key, destinations, k = 1) {
-        const keyHash = hashFunction(key);
+    function pickDestinations(keyHash, destinations, k = 1) {
         const result = [];
         for (const destination of destinations) {
             result.push({

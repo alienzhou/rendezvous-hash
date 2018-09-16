@@ -77,13 +77,11 @@ function score(hashValue: Uint8Array, weight: number): number {
 }
 
 /**
- * @param hashFunction Accepts 8-byte (64-bit) Uint8Array and returns 8-byte (64-bit) Uint8Array
- * @param key 8-byte (64-bit) key
+ * @param keyHash 8-byte (64-bit) key hash
  * @param destinations
- * @param k Number of destinations to return
+ * @param k Integer number of destinations to return
  */
-export function pickDestinations(hashFunction: IHashFunction, key: Uint8Array, destinations: Destination[], k = 1): Uint8Array[] {
-    const keyHash = hashFunction(key);
+export function pickDestinations(keyHash: Uint8Array, destinations: Destination[], k: number = 1): Uint8Array[] {
     const result: Array<{id: Uint8Array, score: number}> = [];
     for (const destination of destinations) {
         result.push({
