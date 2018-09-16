@@ -1,5 +1,3 @@
-export type IHashFunction = (input: Uint8Array) => Uint8Array;
-
 export class Destination {
     /**
      * @param id 8-byte (64-bit) id
